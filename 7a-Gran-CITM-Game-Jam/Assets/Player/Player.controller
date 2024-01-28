@@ -92,7 +92,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Horizonal
     m_Mirror: 0
-  m_BlendParameter: Horizontal
+  m_BlendParameter: Horizonal
   m_BlendParameterY: Vertical
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -108,7 +108,7 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Horizontal
+  - m_Name: Horizonal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -173,10 +173,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0.01
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7349091807772355616}
   m_Solo: 0
