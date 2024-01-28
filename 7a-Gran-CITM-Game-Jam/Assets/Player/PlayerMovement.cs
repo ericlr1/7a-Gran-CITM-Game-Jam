@@ -42,14 +42,14 @@ public class PlayerMovement : MonoBehaviour
         // Determina la dirección del disparo según la dirección del movimiento
         if (movement != Vector2.zero)
         {
-            Debug.Log("Mov: 0");
-            bulletInstance.velocity = movement.normalized * bulletSpeed;
-        }
-        else
-        {
             // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
             Vector2 lastMovementDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
             bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
+        }
+        else
+        {
+             Debug.Log("Mov: 0");
+            bulletInstance.velocity = Vector2.down * bulletSpeed;
         }
     }
 }
