@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rigidBody: {fileID: 1018758820}
+  animator: {fileID: 1018758821}
 --- !u!212 &1018758818
 SpriteRenderer:
   m_ObjectHideFlags: 0
