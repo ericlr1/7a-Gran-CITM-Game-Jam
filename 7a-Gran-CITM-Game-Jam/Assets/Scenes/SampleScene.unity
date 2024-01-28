@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animo Bullets
       objectReference: {fileID: 0}
+    - target: {fileID: 5559095486566346808, guid: 08690c08d8006f6459545e38e46eed1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
