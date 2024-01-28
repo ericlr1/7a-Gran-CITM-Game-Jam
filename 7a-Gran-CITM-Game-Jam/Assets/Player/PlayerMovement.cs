@@ -5,24 +5,51 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float bulletSpeed = 10f;
+    public Rigidbody2D bulletPrefab;
 
     public Rigidbody2D rigidBody;
     public Animator animator;
 
-    Vector2 movment;
+    Vector2 movement;
 
     // Update is called once per frame
     void Update()
     {
-        movment.x = Input.GetAxisRaw("Horizontal");
-        movment.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-        animator.SetFloat("Horizontal", movment.x);
-        animator.SetFloat("Vertical", movment.y);
-        animator.SetFloat("Speed", movment.sqrMagnitude);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
+
     void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + movment * moveSpeed * Time.fixedDeltaTime);
+        rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void Shoot()
+    {
+        // Crea un nuevo proyectil
+        Rigidbody2D bulletInstance = Instantiate(bulletPrefab, rigidBody.position, Quaternion.identity);
+
+        // Determina la dirección del disparo según la dirección del movimiento
+        if (movement != Vector2.zero)
+        {
+            Debug.Log("Mov: 0");
+            bulletInstance.velocity = movement.normalized * bulletSpeed;
+        }
+        else
+        {
+            // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
+            Vector2 lastMovementDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+            bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
+        }
     }
 }
