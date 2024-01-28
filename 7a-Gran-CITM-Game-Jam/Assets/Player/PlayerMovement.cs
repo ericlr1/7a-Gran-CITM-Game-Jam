@@ -37,11 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Shoot()
     {
         // Determina la dirección del disparo según la dirección del movimiento
-        if (movement == Vector2.zero)
-        {
-
-        }
-        else
+        if (movement != Vector2.zero)
         {
             // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
             Rigidbody2D bulletInstance = Instantiate(bulletPrefab, rigidBody.position, Quaternion.identity);
