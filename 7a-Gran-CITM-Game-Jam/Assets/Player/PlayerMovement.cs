@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot();
+            //Shoot();  //Quitamos de forma provisioanl el disparo
         }
     }
 
@@ -44,11 +44,32 @@ public class PlayerMovement : MonoBehaviour
         {
             // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
             Vector2 lastMovementDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
-            bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
+            //bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
+
+            if (lastMovementDirection.x >= 0.1)
+            {
+                Debug.Log("Right");
+                bulletInstance.velocity = Vector2.right * bulletSpeed;
+            }
+            else if (lastMovementDirection.x <= 0.1)
+            {
+                Debug.Log("Left");
+                bulletInstance.velocity = Vector2.left * bulletSpeed;
+            }
+            else if (lastMovementDirection.y >= 0.1)
+            {
+                Debug.Log("Up");
+                bulletInstance.velocity = Vector2.up * bulletSpeed;
+            }
+            else if(lastMovementDirection.y <= 0.1)
+            {
+                Debug.Log("Down");
+                bulletInstance.velocity = Vector2.down * bulletSpeed;
+            }
+
         }
         else
         {
-             Debug.Log("Mov: 0");
             bulletInstance.velocity = Vector2.down * bulletSpeed;
         }
     }
