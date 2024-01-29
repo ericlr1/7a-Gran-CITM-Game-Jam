@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AiChase : MonoBehaviour
 {
-    public GameObject player;
     public float speed;
     public float range;
 
@@ -18,6 +17,8 @@ public class AiChase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Player player = PlayerManager.Instance.Player;
+
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();       
