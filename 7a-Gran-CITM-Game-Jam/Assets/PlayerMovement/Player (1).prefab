@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 1562034234775804419}
   - component: {fileID: 7179446831517862890}
   - component: {fileID: 2454609331530305517}
-  - component: {fileID: 7154757340788205628}
   - component: {fileID: 8199758724702755502}
   - component: {fileID: 1783855486760538481}
   - component: {fileID: 51574511267742764}
@@ -198,23 +197,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7154757340788205628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601796925591739175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94b12660f969364586e6b374bd8a31b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  bulletSpeed: 10
-  bulletPrefab: {fileID: 2497544322498411790, guid: c536d7f1d975adc4ea03fdea32de2472, type: 3}
-  rigidBody: {fileID: 2497544322498411790, guid: c536d7f1d975adc4ea03fdea32de2472, type: 3}
-  animator: {fileID: 51574511267742764}
 --- !u!114 &8199758724702755502
 MonoBehaviour:
   m_ObjectHideFlags: 0
