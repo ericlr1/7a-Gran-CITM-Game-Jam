@@ -20,5 +20,4 @@ public class Bullet : MonoBehaviour
         // Si la bala colisiona con algo, se destruye
         Destroy(gameObject);
     }
-
 }
