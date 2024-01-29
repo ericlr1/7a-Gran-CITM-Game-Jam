@@ -14,4 +14,18 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("DifficultScene");
     }
+    public void CargarDifficultyEasy()
+    {
+        SceneManager.LoadScene("DifficultEasyScene");
+    }
+    public void CargarDifficultyNormal()
+    {
+        SceneManager.LoadScene("DifficultNormalScene");
+    }
+    public void CargarDifficultyHard()
+    {
+        SceneManager.LoadScene("DifficultHardScene");
+    }
+
+
 }
