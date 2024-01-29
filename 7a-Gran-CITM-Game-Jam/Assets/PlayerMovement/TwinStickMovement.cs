@@ -24,6 +24,10 @@ public class TwinStickMovement : MonoBehaviour
     private PlayerControls playerControls;
     private PlayerInput playerInput;
 
+    public float bulletSpeed = 10f;
+    public Rigidbody2D bulletPrefab;
+    public Transform shootingPoint;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -47,12 +51,17 @@ public class TwinStickMovement : MonoBehaviour
         HandleInput();
         HandleMovement();
         HandleRotation();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
 
     void HandleInput()
     {
         movement = playerControls.Controls.Movement.ReadValue<Vector2>();
-        aim = playerControls.Controls.Aim.ReadValue<Vector2>();
+        aim = playerControls.Controls.Aim.ReadValue<Vector2>();        
     }
 
     void HandleMovement()
@@ -79,4 +88,32 @@ public class TwinStickMovement : MonoBehaviour
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 
+
+    void Shoot()
+    {
+        Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
+
+        if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
+        {
+            bulletInstance.velocity = new Vector2(animator.GetFloat("AimX"), animator.GetFloat("AimY")).normalized * bulletSpeed;
+        }
+        else
+        {
+            bulletInstance.velocity = Vector2.down * bulletSpeed;
+        }
+
+
+        // Determina la dirección del disparo según la dirección del movimiento
+        //if (movement != Vector2.zero)
+        //{
+        //    // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
+        //    Vector2 lastMovementDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+        //    bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
+        //}
+        //else
+        //{
+        //    Debug.Log("Mov: 0");
+        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
+        //}
+    }
 }
