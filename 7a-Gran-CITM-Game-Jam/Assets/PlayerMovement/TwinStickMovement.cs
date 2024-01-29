@@ -102,14 +102,30 @@ public class TwinStickMovement : MonoBehaviour
             bulletInstance.velocity = Vector2.down * bulletSpeed;
         }
 
-        //Mirar como afecta esto a las posiciones relativas del apuntado con el mando & meter el || de las teclas/botones mando y teclado
-        if(animator.GetFloat("AimX") > 0.75) { }
-        else if(animator.GetFloat("AimX") > 0.75) { }
-        else if(animator.GetFloat("AimX") > 0.75) { }
-        else if(animator.GetFloat("AimX") > 0.75) { }
+        // Definir los puntos de transición
+        double transitionPoint = 0.75;
 
-
-
+        // Determinar la dirección
+        if (animator.GetFloat("AimY") >= transitionPoint)
+        {
+            //Up
+            bulletInstance.velocity = Vector2.up * bulletSpeed;
+        }
+        else if (animator.GetFloat("AimY") < -transitionPoint)
+        {
+            //Down
+            bulletInstance.velocity = Vector2.down * bulletSpeed;
+        }
+        else if (animator.GetFloat("AimX") >= transitionPoint)
+        {
+            //Right
+            bulletInstance.velocity = Vector2.right * bulletSpeed;
+        }
+        else if (animator.GetFloat("AimX") < -transitionPoint)
+        {
+            //Left
+            bulletInstance.velocity = Vector2.left * bulletSpeed;
+        }
 
 
         // Determina la dirección del disparo según la dirección del movimiento
