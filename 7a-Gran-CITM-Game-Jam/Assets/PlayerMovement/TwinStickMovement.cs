@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 public class TwinStickMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5f;
-    [SerializeField] private float controllerDeadzone = 0.1f;
-    [SerializeField] private float gamepadRotateSmoothing = 1000f;
 
     [SerializeField] private bool isGamepad;
 
@@ -126,19 +124,5 @@ public class TwinStickMovement : MonoBehaviour
             //Left
             bulletInstance.velocity = Vector2.left * bulletSpeed;
         }
-
-
-        // Determina la dirección del disparo según la dirección del movimiento
-        //if (movement != Vector2.zero)
-        //{
-        //    // Si el jugador no se está moviendo, la bala dispara en la última dirección de movimiento
-        //    Vector2 lastMovementDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
-        //    bulletInstance.velocity = lastMovementDirection.normalized * bulletSpeed;
-        //}
-        //else
-        //{
-        //    Debug.Log("Mov: 0");
-        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
-        //}
     }
 }
