@@ -69,16 +69,8 @@ public class TwinStickMovement : MonoBehaviour
     {
         if(isGamepad)
         {
-            //Rotate the player
-            if(Mathf.Abs(aim.x) > controllerDeadzone || Mathf.Abs(aim.y) > controllerDeadzone)
-            {
-                Vector3 playerDirection = Vector3.right * aim.x + Vector3.forward * aim.y;
-                if(playerDirection.sqrMagnitude > 0.0f)
-                {
-                    Quaternion newRotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, gamepadRotateSmoothing * Time.deltaTime);
-                }
-            }
+            animator.SetFloat("AimX", aim.x);
+            animator.SetFloat("AimY", aim.y);
         }
     }
 
