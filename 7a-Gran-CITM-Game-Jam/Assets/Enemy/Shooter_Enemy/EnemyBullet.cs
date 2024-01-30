@@ -36,7 +36,6 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Meter que aumente lo crazy que esta
-            //other.gameObject...
             Destroy(gameObject);
         }
     }
