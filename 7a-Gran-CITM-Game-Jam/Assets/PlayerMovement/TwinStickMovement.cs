@@ -110,6 +110,22 @@ public class TwinStickMovement : MonoBehaviour
         animator.SetFloat("Speed", movement.sqrMagnitude);
         Vector3 move = new Vector3(movement.x, movement.y, 0);
         controller.Move(move * Time.deltaTime * playerSpeed);
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetBool("Walk_Up", true);
+        }
+        if(Input.GetKeyUp(KeyCode.W))
+        {
+            animator.SetBool("Walk_Up", false);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.SetBool("Walk_Down", true);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            animator.SetBool("Walk_Down", false);
+        }
     }
 
     void HandleRotation()
