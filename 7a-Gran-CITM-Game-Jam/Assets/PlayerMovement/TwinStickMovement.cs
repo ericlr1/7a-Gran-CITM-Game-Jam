@@ -23,7 +23,7 @@ public class TwinStickMovement : MonoBehaviour
     private Gamepad gamepad = null;
 
     public CinemachineVirtualCamera mainCamera;
-    public float zoomDuration = 1;
+    public float zoomDuration = 0.7f;
     public float zoomAmount = 5.0f;
     private float originalFieldOfView;
     private float targetFieldOfView;
