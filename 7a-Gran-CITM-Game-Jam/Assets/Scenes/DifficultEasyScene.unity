@@ -1123,8 +1123,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1578068809}
     - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
+      propertyPath: zoomAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
       propertyPath: zoomDuration
-      value: 0.7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
       propertyPath: cadenciaWeapon
