@@ -7,31 +7,30 @@ using UnityEngine.InputSystem;
 public class TwinStickMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5f;
-
     [SerializeField] private bool isGamepad;
 
     private CharacterController controller;
-
-    public Animator animator;
-
+    private PlayerControls playerControls;
+    private PlayerInput playerInput;
     private Vector2 movement;
     private Vector2 aim;
 
-    private Vector3 playerVelocity;
-
-    private PlayerControls playerControls;
-    private PlayerInput playerInput;
-
+    public Animator animator;
     public float bulletSpeed = 10f;
+
     public Rigidbody2D bulletPrefab;
     public Transform shootingPoint;
 
-
     public float vibrationDuration = 0.05f;
-
     private Gamepad gamepad = null;
 
     public Camera mainCamera;
+    public float zoomDuration = 1.0f;
+    public float zoomAmount = 20.0f;
+    private float originalFieldOfView;
+    private float targetFieldOfView;
+    private bool isZooming = false;
+    private float zoomTimer = 0.0f;
 
     void Awake()
     {
@@ -49,7 +48,7 @@ public class TwinStickMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        playerControls.Disable(); 
+        playerControls.Disable();
     }
 
     // Update is called once per frame
@@ -59,8 +58,8 @@ public class TwinStickMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        
-        if(Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -69,7 +68,7 @@ public class TwinStickMovement : MonoBehaviour
     void HandleInput()
     {
         movement = playerControls.Controls.Movement.ReadValue<Vector2>();
-        aim = playerControls.Controls.Aim.ReadValue<Vector2>();        
+        aim = playerControls.Controls.Aim.ReadValue<Vector2>();
     }
 
     void HandleMovement()
@@ -84,19 +83,19 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleRotation()
     {
-       // Si no se esta apuntando con las teclas, el player apunta
-       // a la direccion a la que camina
+        // Si no se esta apuntando con las teclas, el player apunta
+        // a la direccion a la que camina
 
-       if(aim.x != 0 || aim.y != 0)
-       {
+        if (aim.x != 0 || aim.y != 0)
+        {
             animator.SetFloat("AimX", aim.x);
             animator.SetFloat("AimY", aim.y);
-       }
-       else
-       {
+        }
+        else
+        {
             animator.SetFloat("AimX", movement.x);
             animator.SetFloat("AimY", movement.y);
-       }
+        }
     }
 
     public void OnDeviceChange(PlayerInput pi)
@@ -176,30 +175,24 @@ public class TwinStickMovement : MonoBehaviour
 
     IEnumerator RecoilCamera()
     {
+        StartZoom();
+        yield return new WaitForSeconds(zoomDuration);
+        ResetZoom();
+    }
 
-        Debug.Log("Recoil!");
-        float recoilDistance = 0.1f; // Distancia de retroceso de la cámara
-        float recoilSpeed = 0.1f; // Velocidad de retroceso de la cámara
+    void StartZoom()
+    {
+        Debug.Log("Zoom In");
+        targetFieldOfView = originalFieldOfView - zoomAmount;
+        isZooming = true;
+        zoomTimer = 0.0f;
+    }
 
-        Vector3 originalPosition = mainCamera.transform.localPosition;
-        Vector3 recoilPosition = originalPosition - mainCamera.transform.forward * recoilDistance;
-
-        float t = 0;
-
-        while (t < 1)
-        {
-            t += Time.deltaTime * recoilSpeed;
-            mainCamera.transform.localPosition = Vector3.Lerp(originalPosition, recoilPosition, t);
-            yield return null;
-        }
-
-        t = 0;
-
-        while (t < 1)
-        {
-            t += Time.deltaTime * recoilSpeed;
-            mainCamera.transform.localPosition = Vector3.Lerp(recoilPosition, originalPosition, t);
-            yield return null;
-        }
+    void ResetZoom()
+    {
+        Debug.Log("Zoom Out");
+        targetFieldOfView = originalFieldOfView;
+        isZooming = true;
+        zoomTimer = 0.0f;
     }
 }
