@@ -116,13 +116,6 @@ public class TwinStickMovement : MonoBehaviour
         //Recoil camera
         StartCoroutine(RecoilCamera());
 
-        Cinemachine.CinemachineBrain cinemachineBrain = mainCamera.GetComponent<Cinemachine.CinemachineBrain>();
-        if (cinemachineBrain != null)
-        {
-            cinemachineBrain.enabled = false;
-            cinemachineBrain.enabled = true;
-        }
-
 
         Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 

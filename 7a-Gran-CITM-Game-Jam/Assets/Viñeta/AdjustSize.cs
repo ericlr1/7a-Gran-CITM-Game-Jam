@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AdjustSize : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
         RectTransform rt = GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(Screen.width, Screen.height);
