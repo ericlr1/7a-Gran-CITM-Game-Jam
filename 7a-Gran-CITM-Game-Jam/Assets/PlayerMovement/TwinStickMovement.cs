@@ -55,7 +55,7 @@ public class TwinStickMovement : MonoBehaviour
 
     void Start()
     {
-        originalFieldOfView = mainCamera.m_Lens.FieldOfView;
+        originalFieldOfView = mainCamera.m_Lens.OrthographicSize;
     }
 
     void Update()
@@ -79,15 +79,15 @@ public class TwinStickMovement : MonoBehaviour
             }
         }
 
-        // Si estamos haciendo zoom, actualiza el FOV de la c�mara de forma suave
+        // Si estamos haciendo zoom, actualiza el FOV de la camara de forma suave
         if (isZooming)
         {
             zoomTimer += Time.deltaTime;
             float progress = Mathf.Clamp01(zoomTimer / zoomDuration);
 
             // Interpola suavemente entre el FOV actual y el objetivo
-            float newFieldOfView = Mathf.Lerp(mainCamera.m_Lens.FieldOfView, targetFieldOfView, progress);
-            mainCamera.m_Lens.FieldOfView = newFieldOfView;
+            float newFieldOfView = Mathf.Lerp(mainCamera.m_Lens.OrthographicSize, targetFieldOfView, progress);
+            mainCamera.m_Lens.OrthographicSize = newFieldOfView;
 
             // Si hemos alcanzado el valor objetivo, detenemos el zoom
             if (progress == 1.0f)
