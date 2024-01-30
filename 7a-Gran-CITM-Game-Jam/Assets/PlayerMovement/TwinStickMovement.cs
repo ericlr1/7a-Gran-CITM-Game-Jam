@@ -63,7 +63,7 @@ public class TwinStickMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && canShoot == true && ammo >= 1)
+        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)) && canShoot == true && ammo >= 1)
         {
             StartCoroutine(ShootCooldown());
             Shoot();
