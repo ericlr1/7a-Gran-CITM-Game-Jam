@@ -26,11 +26,18 @@ public class TwinStickMovement : MonoBehaviour
     public Rigidbody2D bulletPrefab;
     public Transform shootingPoint;
 
+
+    public float vibrationDuration = 0.05f;
+
+    private Gamepad gamepad;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
+
+        gamepad = Gamepad.current;
     }
 
     private void OnEnable()
@@ -51,7 +58,7 @@ public class TwinStickMovement : MonoBehaviour
         HandleRotation();
 
         
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5)
         {
             Shoot();
         }
@@ -99,40 +106,59 @@ public class TwinStickMovement : MonoBehaviour
     {
         Debug.Log("SHOOT!");
 
-        //Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
+        StartCoroutine(VibrateController());
 
-        //if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
-        //{
-        //    bulletInstance.velocity = new Vector2(animator.GetFloat("AimX"), animator.GetFloat("AimY")).normalized * bulletSpeed;
-        //}
-        //else
-        //{
-        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
-        //}
+        Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
-        //// Definir los puntos de transición
-        //double transitionPoint = 0.75;
+        if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
+        {
+            bulletInstance.velocity = new Vector2(animator.GetFloat("AimX"), animator.GetFloat("AimY")).normalized * bulletSpeed;
+        }
+        else
+        {
+            bulletInstance.velocity = Vector2.down * bulletSpeed;
+        }
 
-        //// Determinar la dirección
-        //if (animator.GetFloat("AimY") >= transitionPoint)
-        //{
-        //    //Up
-        //    bulletInstance.velocity = Vector2.up * bulletSpeed;
-        //}
-        //else if (animator.GetFloat("AimY") < -transitionPoint)
-        //{
-        //    //Down
-        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
-        //}
-        //else if (animator.GetFloat("AimX") >= transitionPoint)
-        //{
-        //    //Right
-        //    bulletInstance.velocity = Vector2.right * bulletSpeed;
-        //}
-        //else if (animator.GetFloat("AimX") < -transitionPoint)
-        //{
-        //    //Left
-        //    bulletInstance.velocity = Vector2.left * bulletSpeed;
-        //}
+        // Definir los puntos de transición
+        double transitionPoint = 0.75;
+
+        // Determinar la dirección
+        if (animator.GetFloat("AimY") >= transitionPoint)
+        {
+            //Up
+            bulletInstance.velocity = Vector2.up * bulletSpeed;
+            return;
+        }
+        else if (animator.GetFloat("AimY") < -transitionPoint)
+        {
+            //Down
+            bulletInstance.velocity = Vector2.down * bulletSpeed;
+            return;
+        }
+        else if (animator.GetFloat("AimX") >= transitionPoint)
+        {
+            //Right
+            bulletInstance.velocity = Vector2.right * bulletSpeed;
+            return;
+        }
+        else if (animator.GetFloat("AimX") < -transitionPoint)
+        {
+            //Left
+            bulletInstance.velocity = Vector2.left * bulletSpeed;
+            return;
+        }
+    }
+
+    // Corrutina para controlar la vibración
+    IEnumerator VibrateController()
+    {
+        // Vibrar el mando
+        gamepad.SetMotorSpeeds(0.2f, 0.2f);
+
+        // Esperar la duración especificada
+        yield return new WaitForSeconds(vibrationDuration);
+
+        // Detener la vibración
+        gamepad.SetMotorSpeeds(0f, 0f);
     }
 }
