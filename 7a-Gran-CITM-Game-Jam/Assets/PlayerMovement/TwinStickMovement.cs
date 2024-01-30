@@ -74,11 +74,10 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        if(isGamepad)
-        {
-            animator.SetFloat("AimX", aim.x);
-            animator.SetFloat("AimY", aim.y);
-        }
+       
+        animator.SetFloat("AimX", aim.x);
+        animator.SetFloat("AimY", aim.y);
+        
     }
 
     public void OnDeviceChange(PlayerInput pi)
