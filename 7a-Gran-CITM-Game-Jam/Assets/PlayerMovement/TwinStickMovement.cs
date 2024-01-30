@@ -54,6 +54,7 @@ public class TwinStickMovement : MonoBehaviour
         {
             Shoot();
         }
+        
     }
 
     void HandleInput()
@@ -74,10 +75,16 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleRotation()
     {
-       
-        animator.SetFloat("AimX", aim.x);
-        animator.SetFloat("AimY", aim.y);
-        
+       if(aim.x != 0 || aim.y != 0)
+       {
+            animator.SetFloat("AimX", aim.x);
+            animator.SetFloat("AimY", aim.y);
+       }
+       else
+       {
+            animator.SetFloat("AimX", movement.x);
+            animator.SetFloat("AimY", movement.y);
+       }
     }
 
     public void OnDeviceChange(PlayerInput pi)
