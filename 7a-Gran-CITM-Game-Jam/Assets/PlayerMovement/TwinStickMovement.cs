@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Cinemachine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(CharacterController))]
 public class TwinStickMovement : MonoBehaviour
@@ -34,6 +35,9 @@ public class TwinStickMovement : MonoBehaviour
 
     public float ammo = 6.0f;
     private bool isReloading = false;
+    public AudioSource source;
+    public AudioClip clipRecarga;
+    public AudioClip clipDisparo;
 
     void Awake()
     {
@@ -172,6 +176,9 @@ public class TwinStickMovement : MonoBehaviour
         Debug.Log("SHOOT!");
         ammo--;
 
+        //Que a esto afecte la variable del sonido
+        source.PlayOneShot(clipDisparo);
+
         if (gamepad != null)
         {
             StartCoroutine(VibrateController());
@@ -262,7 +269,8 @@ public class TwinStickMovement : MonoBehaviour
 
             if (ammo < 6)
             {
-                //Hacer sonar el sonido de recarga
+                //Hacer sonar el sonido de recarga (que a esto afecte la variable del sonido)
+                source.PlayOneShot(clipRecarga);
                 ammo++;
             }
         }
