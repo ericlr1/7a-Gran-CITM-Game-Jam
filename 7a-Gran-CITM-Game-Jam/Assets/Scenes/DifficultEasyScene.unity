@@ -974,6 +974,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923879097}
   m_CullTransparentMesh: 1
+--- !u!82 &1047820221 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4616410307599956416, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
+  m_PrefabInstance: {fileID: 6935566080479330490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1111233486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,6 +3458,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1139384354}
     - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1047820221}
+    - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1111233487}
@@ -3460,6 +3469,14 @@ PrefabInstance:
       propertyPath: zoomAmount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
+      propertyPath: clipDisparo
+      value: 
+      objectReference: {fileID: 8300000, guid: ede6096084453ef42a63787a4e536ddf, type: 3}
+    - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
+      propertyPath: clipRecarga
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fa3289057d965849b11285cc15938fe, type: 3}
     - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
       propertyPath: zoomDuration
       value: 3
