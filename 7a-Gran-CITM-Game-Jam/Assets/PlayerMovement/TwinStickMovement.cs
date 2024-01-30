@@ -33,6 +33,7 @@ public class TwinStickMovement : MonoBehaviour
     public float cadenciaWeapon = 50.0f;
 
     public float ammo = 6.0f;
+    private bool isReloading = false;
 
     void Awake()
     {
@@ -72,7 +73,7 @@ public class TwinStickMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ammo = 6;
+            StartCoroutine(Reload());
         }
 
         // Si estamos haciendo zoom, actualiza el FOV de la c�mara de forma suave
@@ -216,5 +217,30 @@ public class TwinStickMovement : MonoBehaviour
         targetFieldOfView = originalFieldOfView;
         isZooming = true;
         zoomTimer = 0.0f;
+    }
+
+    IEnumerator Reload()
+    {
+        if (isReloading)
+            yield break;
+
+        isReloading = true;
+
+        float reloadTime = 50f;
+
+        for (int i = 0; i < 6; i++)
+        {
+            yield return new WaitForSeconds(reloadTime * Time.deltaTime);
+
+            if (ammo < 6)
+            {
+                //Hacer sonar el sonido de recarga
+                ammo++;
+            }
+        }
+
+        Debug.Log("Recarga completa. Ammo: " + ammo);
+
+        isReloading = false;
     }
 }
