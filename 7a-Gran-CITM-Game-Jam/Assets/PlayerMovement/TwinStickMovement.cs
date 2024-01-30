@@ -73,7 +73,10 @@ public class TwinStickMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            StartCoroutine(Reload());
+            if (ammo < 6)
+            {
+                StartCoroutine(Reload());
+            }
         }
 
         // Si estamos haciendo zoom, actualiza el FOV de la c�mara de forma suave
