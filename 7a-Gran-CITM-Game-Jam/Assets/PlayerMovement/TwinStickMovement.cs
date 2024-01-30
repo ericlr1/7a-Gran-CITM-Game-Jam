@@ -99,6 +99,7 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleInput()
     {
+
         movement = playerControls.Controls.Movement.ReadValue<Vector2>();
         aim = playerControls.Controls.Aim.ReadValue<Vector2>();
     }
@@ -125,6 +126,14 @@ public class TwinStickMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S))
         {
             animator.SetBool("Walk_Down", false);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            animator.SetBool("Walk_Up", true);
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            animator.SetBool("Walk_Up", false);
         }
     }
 
