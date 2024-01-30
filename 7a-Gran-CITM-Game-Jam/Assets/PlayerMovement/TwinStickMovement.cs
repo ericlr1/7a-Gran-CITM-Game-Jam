@@ -21,6 +21,7 @@ public class TwinStickMovement : MonoBehaviour
     public Transform shootingPoint;
     public float vibrationDuration = 0.05f;
     private Gamepad gamepad = null;
+    private bool canShoot = true;
 
     public CinemachineVirtualCamera mainCamera;
     public float zoomDuration = 0.7f;
@@ -29,6 +30,7 @@ public class TwinStickMovement : MonoBehaviour
     private float targetFieldOfView;
     private bool isZooming = false;
     private float zoomTimer = 0.0f;
+    public float cadenciaWeapon = 50.0f;
 
     void Awake()
     {
@@ -59,8 +61,9 @@ public class TwinStickMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        if (Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space)) && canShoot == true)
         {
+            StartCoroutine(ShootCooldown());
             Shoot();
         }
 
@@ -114,6 +117,17 @@ public class TwinStickMovement : MonoBehaviour
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    IEnumerator ShootCooldown()
+    {
+        Debug.Log("Cooldown ON");
+        canShoot = false;
+
+        yield return new WaitForSeconds(cadenciaWeapon * Time.deltaTime);
+
+        Debug.Log("Cooldown OFF");
+        canShoot = true; 
     }
 
     void Shoot()
