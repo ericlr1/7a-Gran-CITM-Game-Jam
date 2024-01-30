@@ -32,6 +32,8 @@ public class TwinStickMovement : MonoBehaviour
     private float zoomTimer = 0.0f;
     public float cadenciaWeapon = 50.0f;
 
+    public float ammo = 6.0f;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -61,10 +63,15 @@ public class TwinStickMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && canShoot == true)
+        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && canShoot == true && ammo >= 1)
         {
             StartCoroutine(ShootCooldown());
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ammo = 6;
         }
 
         // Si estamos haciendo zoom, actualiza el FOV de la cámara de forma suave
@@ -133,6 +140,7 @@ public class TwinStickMovement : MonoBehaviour
     void Shoot()
     {
         Debug.Log("SHOOT!");
+        ammo--;
 
         if (gamepad != null)
         {
