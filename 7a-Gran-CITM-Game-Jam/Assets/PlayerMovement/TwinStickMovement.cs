@@ -31,6 +31,8 @@ public class TwinStickMovement : MonoBehaviour
 
     private Gamepad gamepad = null;
 
+    public Camera mainCamera;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -111,6 +113,17 @@ public class TwinStickMovement : MonoBehaviour
             StartCoroutine(VibrateController());
         }
 
+        //Recoil camera
+        StartCoroutine(RecoilCamera());
+
+        Cinemachine.CinemachineBrain cinemachineBrain = mainCamera.GetComponent<Cinemachine.CinemachineBrain>();
+        if (cinemachineBrain != null)
+        {
+            cinemachineBrain.enabled = false;
+            cinemachineBrain.enabled = true;
+        }
+
+
         Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
         if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
@@ -165,6 +178,35 @@ public class TwinStickMovement : MonoBehaviour
 
             // Detener la vibración
             gamepad.SetMotorSpeeds(0f, 0f);
+        }
+    }
+
+    IEnumerator RecoilCamera()
+    {
+
+        Debug.Log("Recoil!");
+        float recoilDistance = 0.1f; // Distancia de retroceso de la cámara
+        float recoilSpeed = 0.1f; // Velocidad de retroceso de la cámara
+
+        Vector3 originalPosition = mainCamera.transform.localPosition;
+        Vector3 recoilPosition = originalPosition - mainCamera.transform.forward * recoilDistance;
+
+        float t = 0;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime * recoilSpeed;
+            mainCamera.transform.localPosition = Vector3.Lerp(originalPosition, recoilPosition, t);
+            yield return null;
+        }
+
+        t = 0;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime * recoilSpeed;
+            mainCamera.transform.localPosition = Vector3.Lerp(recoilPosition, originalPosition, t);
+            yield return null;
         }
     }
 }
