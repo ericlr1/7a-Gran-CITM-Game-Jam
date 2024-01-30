@@ -1,32 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 public class TwinStickMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private bool isGamepad;
-
     private CharacterController controller;
     private PlayerControls playerControls;
     private PlayerInput playerInput;
     private Vector2 movement;
+
     private Vector2 aim;
-
     public Animator animator;
-    public float bulletSpeed = 10f;
 
+    public float bulletSpeed = 10f;
     public Rigidbody2D bulletPrefab;
     public Transform shootingPoint;
-
     public float vibrationDuration = 0.05f;
     private Gamepad gamepad = null;
 
-    public Camera mainCamera;
-    public float zoomDuration = 1.0f;
-    public float zoomAmount = 20.0f;
+    public CinemachineVirtualCamera mainCamera;
+    public float zoomDuration = 1;
+    public float zoomAmount = 5.0f;
     private float originalFieldOfView;
     private float targetFieldOfView;
     private bool isZooming = false;
@@ -37,7 +35,6 @@ public class TwinStickMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
-
         gamepad = Gamepad.current;
     }
 
@@ -51,17 +48,37 @@ public class TwinStickMovement : MonoBehaviour
         playerControls.Disable();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        originalFieldOfView = mainCamera.m_Lens.FieldOfView;
+    }
+
     void Update()
     {
         HandleInput();
         HandleMovement();
         HandleRotation();
 
-
         if (Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
+        }
+
+        // Si estamos haciendo zoom, actualiza el FOV de la cámara de forma suave
+        if (isZooming)
+        {
+            zoomTimer += Time.deltaTime;
+            float progress = Mathf.Clamp01(zoomTimer / zoomDuration);
+
+            // Interpola suavemente entre el FOV actual y el objetivo
+            float newFieldOfView = Mathf.Lerp(mainCamera.m_Lens.FieldOfView, targetFieldOfView, progress);
+            mainCamera.m_Lens.FieldOfView = newFieldOfView;
+
+            // Si hemos alcanzado el valor objetivo, detenemos el zoom
+            if (progress == 1.0f)
+            {
+                isZooming = false;
+            }
         }
     }
 
@@ -76,16 +93,12 @@ public class TwinStickMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
         Vector3 move = new Vector3(movement.x, movement.y, 0);
         controller.Move(move * Time.deltaTime * playerSpeed);
     }
 
     void HandleRotation()
     {
-        // Si no se esta apuntando con las teclas, el player apunta
-        // a la direccion a la que camina
-
         if (aim.x != 0 || aim.y != 0)
         {
             animator.SetFloat("AimX", aim.x);
@@ -112,9 +125,7 @@ public class TwinStickMovement : MonoBehaviour
             StartCoroutine(VibrateController());
         }
 
-        //Recoil camera
         StartCoroutine(RecoilCamera());
-
 
         Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
@@ -127,48 +138,36 @@ public class TwinStickMovement : MonoBehaviour
             bulletInstance.velocity = Vector2.down * bulletSpeed;
         }
 
-        // Definir los puntos de transición
         double transitionPoint = 0.75;
 
-        // Determinar la dirección
         if (animator.GetFloat("AimY") >= transitionPoint)
         {
-            //Up
             bulletInstance.velocity = Vector2.up * bulletSpeed;
             return;
         }
         else if (animator.GetFloat("AimY") < -transitionPoint)
         {
-            //Down
             bulletInstance.velocity = Vector2.down * bulletSpeed;
             return;
         }
         else if (animator.GetFloat("AimX") >= transitionPoint)
         {
-            //Right
             bulletInstance.velocity = Vector2.right * bulletSpeed;
             return;
         }
         else if (animator.GetFloat("AimX") < -transitionPoint)
         {
-            //Left
             bulletInstance.velocity = Vector2.left * bulletSpeed;
             return;
         }
     }
 
-    // Corrutina para controlar la vibración
     IEnumerator VibrateController()
     {
         if (gamepad != null)
         {
-            // Vibrar el mando
             gamepad.SetMotorSpeeds(0.2f, 0.2f);
-
-            // Esperar la duración especificada
             yield return new WaitForSeconds(vibrationDuration);
-
-            // Detener la vibración
             gamepad.SetMotorSpeeds(0f, 0f);
         }
     }
@@ -176,7 +175,7 @@ public class TwinStickMovement : MonoBehaviour
     IEnumerator RecoilCamera()
     {
         StartZoom();
-        yield return new WaitForSeconds(zoomDuration);
+        yield return new WaitForSeconds(zoomDuration * Time.deltaTime);
         ResetZoom();
     }
 
