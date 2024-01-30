@@ -181,7 +181,7 @@ public class TwinStickMovement : MonoBehaviour
 
     void StartZoom()
     {
-        Debug.Log("Zoom In");
+        //Debug.Log("Zoom In");
         targetFieldOfView = originalFieldOfView - zoomAmount;
         isZooming = true;
         zoomTimer = 0.0f;
@@ -189,7 +189,7 @@ public class TwinStickMovement : MonoBehaviour
 
     void ResetZoom()
     {
-        Debug.Log("Zoom Out");
+        //Debug.Log("Zoom Out");
         targetFieldOfView = originalFieldOfView;
         isZooming = true;
         zoomTimer = 0.0f;
