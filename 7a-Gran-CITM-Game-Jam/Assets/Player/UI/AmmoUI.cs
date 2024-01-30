@@ -24,6 +24,7 @@ public class AmmoUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log("Ammo: " + script.ammo);
         switch (script.ammo)
         {
             case 0:
