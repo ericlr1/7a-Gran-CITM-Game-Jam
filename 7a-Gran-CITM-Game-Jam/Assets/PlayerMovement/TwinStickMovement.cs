@@ -50,11 +50,11 @@ public class TwinStickMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
-        
     }
 
     void HandleInput()
@@ -75,6 +75,9 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleRotation()
     {
+       // Si no se esta apuntando con las teclas, el player apunta
+       // a la direccion a la que camina
+
        if(aim.x != 0 || aim.y != 0)
        {
             animator.SetFloat("AimX", aim.x);
@@ -92,43 +95,44 @@ public class TwinStickMovement : MonoBehaviour
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 
-
     void Shoot()
     {
-        Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
+        Debug.Log("SHOOT!");
 
-        if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
-        {
-            bulletInstance.velocity = new Vector2(animator.GetFloat("AimX"), animator.GetFloat("AimY")).normalized * bulletSpeed;
-        }
-        else
-        {
-            bulletInstance.velocity = Vector2.down * bulletSpeed;
-        }
+        //Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
-        // Definir los puntos de transición
-        double transitionPoint = 0.75;
+        //if (animator.GetFloat("AimX") != 0 || animator.GetFloat("AimY") != 0)
+        //{
+        //    bulletInstance.velocity = new Vector2(animator.GetFloat("AimX"), animator.GetFloat("AimY")).normalized * bulletSpeed;
+        //}
+        //else
+        //{
+        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
+        //}
 
-        // Determinar la dirección
-        if (animator.GetFloat("AimY") >= transitionPoint)
-        {
-            //Up
-            bulletInstance.velocity = Vector2.up * bulletSpeed;
-        }
-        else if (animator.GetFloat("AimY") < -transitionPoint)
-        {
-            //Down
-            bulletInstance.velocity = Vector2.down * bulletSpeed;
-        }
-        else if (animator.GetFloat("AimX") >= transitionPoint)
-        {
-            //Right
-            bulletInstance.velocity = Vector2.right * bulletSpeed;
-        }
-        else if (animator.GetFloat("AimX") < -transitionPoint)
-        {
-            //Left
-            bulletInstance.velocity = Vector2.left * bulletSpeed;
-        }
+        //// Definir los puntos de transición
+        //double transitionPoint = 0.75;
+
+        //// Determinar la dirección
+        //if (animator.GetFloat("AimY") >= transitionPoint)
+        //{
+        //    //Up
+        //    bulletInstance.velocity = Vector2.up * bulletSpeed;
+        //}
+        //else if (animator.GetFloat("AimY") < -transitionPoint)
+        //{
+        //    //Down
+        //    bulletInstance.velocity = Vector2.down * bulletSpeed;
+        //}
+        //else if (animator.GetFloat("AimX") >= transitionPoint)
+        //{
+        //    //Right
+        //    bulletInstance.velocity = Vector2.right * bulletSpeed;
+        //}
+        //else if (animator.GetFloat("AimX") < -transitionPoint)
+        //{
+        //    //Left
+        //    bulletInstance.velocity = Vector2.left * bulletSpeed;
+        //}
     }
 }
