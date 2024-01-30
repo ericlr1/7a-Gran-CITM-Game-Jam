@@ -1251,7 +1251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8199758724702755502, guid: f32c10333a16ed54e8ba1e0a432270d7, type: 3}
       propertyPath: cadenciaWeapon
-      value: 200
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

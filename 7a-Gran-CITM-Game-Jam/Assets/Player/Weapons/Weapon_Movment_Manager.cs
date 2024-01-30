@@ -16,13 +16,20 @@ public class Weapon_Movment_Manager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            // Cambia el valor del parámetro booleano a true
             animator.SetBool("Movment_Izquierda", true);
         }
         if(Input.GetKeyUp(KeyCode.LeftArrow))
         {
             animator.SetBool("Movment_Izquierda", false);
         }
-       
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        { 
+            animator.SetBool("Movment_Derecha", true);
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            animator.SetBool("Movment_Derecha", false);
+        }
+
     }
 }
