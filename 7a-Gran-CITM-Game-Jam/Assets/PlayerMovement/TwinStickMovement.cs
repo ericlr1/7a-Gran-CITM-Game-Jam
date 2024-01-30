@@ -29,7 +29,7 @@ public class TwinStickMovement : MonoBehaviour
 
     public float vibrationDuration = 0.05f;
 
-    private Gamepad gamepad;
+    private Gamepad gamepad = null;
 
     void Awake()
     {
@@ -58,7 +58,7 @@ public class TwinStickMovement : MonoBehaviour
         HandleRotation();
 
         
-        if(Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5)
+        if(Input.GetButtonDown("Fire1") || Input.GetAxis("Left Trigger") > 0.5 || Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -106,7 +106,10 @@ public class TwinStickMovement : MonoBehaviour
     {
         Debug.Log("SHOOT!");
 
-        StartCoroutine(VibrateController());
+        if (gamepad != null)
+        {
+            StartCoroutine(VibrateController());
+        }
 
         Rigidbody2D bulletInstance = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
@@ -152,13 +155,16 @@ public class TwinStickMovement : MonoBehaviour
     // Corrutina para controlar la vibración
     IEnumerator VibrateController()
     {
-        // Vibrar el mando
-        gamepad.SetMotorSpeeds(0.2f, 0.2f);
+        if (gamepad != null)
+        {
+            // Vibrar el mando
+            gamepad.SetMotorSpeeds(0.2f, 0.2f);
 
-        // Esperar la duración especificada
-        yield return new WaitForSeconds(vibrationDuration);
+            // Esperar la duración especificada
+            yield return new WaitForSeconds(vibrationDuration);
 
-        // Detener la vibración
-        gamepad.SetMotorSpeeds(0f, 0f);
+            // Detener la vibración
+            gamepad.SetMotorSpeeds(0f, 0f);
+        }
     }
 }
