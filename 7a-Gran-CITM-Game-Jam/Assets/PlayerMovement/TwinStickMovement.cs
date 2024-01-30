@@ -166,6 +166,8 @@ public class TwinStickMovement : MonoBehaviour
     {
         Debug.Log("SHOOT!");
         ammo--;
+
+        //Que a esto afecte la variable del sonido
         source.PlayOneShot(clipDisparo);
 
         if (gamepad != null)
@@ -258,7 +260,7 @@ public class TwinStickMovement : MonoBehaviour
 
             if (ammo < 6)
             {
-                //Hacer sonar el sonido de recarga
+                //Hacer sonar el sonido de recarga (que a esto afecte la variable del sonido)
                 source.PlayOneShot(clipRecarga);
                 ammo++;
             }
