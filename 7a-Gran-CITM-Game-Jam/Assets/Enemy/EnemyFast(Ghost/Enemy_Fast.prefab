@@ -194,4 +194,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salud: 100
-  sonido: {fileID: 8300000, guid: b99b6e656ce4a2b4293857053cc87faa, type: 3}
+  source: {fileID: 0}
+  clipSource: {fileID: 0}
