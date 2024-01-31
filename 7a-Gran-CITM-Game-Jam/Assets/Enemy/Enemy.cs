@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Audio;
+
 public class Enemy : MonoBehaviour
 {
     public int salud = 100;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     public void RecibirDano(int cantidad)
     {
+        
         salud -= cantidad;
 
         // Verifica si la salud es menor o igual a cero para "matar" al enemigo
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
             // Aquí puedes agregar cualquier lógica adicional cuando el enemigo muere
             Destroy(gameObject);
             source.PlayOneShot(clipSource);
+            Debug.Log("Sonido Daño");
         }
     }
 }
