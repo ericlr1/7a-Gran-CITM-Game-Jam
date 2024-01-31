@@ -48,6 +48,8 @@ public class Insanity : MonoBehaviour
         {
             Debug.Log("AddInsanity");
             insanityValue += insanityHitValue;
+            //Poner sonido de daño
+
         }
         else
         {
@@ -61,6 +63,8 @@ public class Insanity : MonoBehaviour
         {
             Debug.Log("ReduceInsanity");
             insanityValue -= insanityHitValue;
+            //Poner sonido de cura
+
         }
     }
 }
