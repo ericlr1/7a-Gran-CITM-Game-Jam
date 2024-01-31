@@ -343,7 +343,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1562034234775804419}
   - component: {fileID: 7179446831517862890}
-  - component: {fileID: 2454609331530305517}
   - component: {fileID: 8199758724702755502}
   - component: {fileID: 1783855486760538481}
   - component: {fileID: 51574511267742764}
@@ -427,32 +426,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!143 &2454609331530305517
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601796925591739175}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0.6399999
-  m_Radius: 0.47999996
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8199758724702755502
 MonoBehaviour:
   m_ObjectHideFlags: 0
