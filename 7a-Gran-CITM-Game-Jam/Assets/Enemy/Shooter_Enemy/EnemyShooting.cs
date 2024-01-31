@@ -28,12 +28,6 @@ public class EnemyShooting : MonoBehaviour
                 // Obtiene la dirección hacia el jugador
                 Vector2 direction = (player.transform.position - transform.position).normalized;
 
-                // Calcula el ángulo en grados
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-                // Rotacion solo en el eje Z
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
                 timer += Time.deltaTime;
 
                 if (timer > 2)
