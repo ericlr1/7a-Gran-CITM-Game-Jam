@@ -2,14 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Cinemachine;
-using UnityEngine.Audio;
 
-[RequireComponent(typeof(CharacterController))]
 public class TwinStickMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private bool isGamepad;
-    private CharacterController controller;
     private PlayerControls playerControls;
     private PlayerInput playerInput;
     private Vector2 movement;
@@ -41,7 +38,6 @@ public class TwinStickMovement : MonoBehaviour
 
     void Awake()
     {
-        controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
         gamepad = Gamepad.current;
@@ -65,7 +61,7 @@ public class TwinStickMovement : MonoBehaviour
     void Update()
     {
         HandleInput();
-        HandleMovement();
+        
         HandleRotation();
 
 
@@ -100,6 +96,10 @@ public class TwinStickMovement : MonoBehaviour
             }
         }
     }
+    public void FixedUpdate()
+    {
+        HandleMovement();
+    }
 
     void HandleInput()
     {
@@ -114,7 +114,8 @@ public class TwinStickMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         Vector3 move = new Vector3(movement.x, movement.y, 0);
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        transform.position += (move * Time.deltaTime * playerSpeed);
+
         if(Input.GetKeyDown(KeyCode.W))
         {
             animator.SetBool("Walk_Up", true);
