@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2957399530947031098, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.011
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 2957399530947031098, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.179
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: 2957399530947031098, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999809
+      value: 0.9999987
       objectReference: {fileID: 0}
     - target: {fileID: 2957399530947031098, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.006175828
+      value: -0.0016360244
       objectReference: {fileID: 0}
     - target: {fileID: 3219565478505752429, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: range
@@ -38,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3246657184471332553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_Color.b
-      value: 0.25111252
+      value: 0.084905684
       objectReference: {fileID: 0}
     - target: {fileID: 3246657184471332553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_Color.g
-      value: 0.25111252
+      value: 0.084905684
       objectReference: {fileID: 0}
     - target: {fileID: 3246657184471332553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_Color.r
-      value: 0.254717
+      value: 0.084905684
       objectReference: {fileID: 0}
     - target: {fileID: 3246657184471332553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_Intensity
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3246657184471332553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 1.0833298
+      value: 1.3238513
       objectReference: {fileID: 0}
     - target: {fileID: 4476410324074976912, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalScale.x
@@ -107,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 4476410324074976912, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212358184844325009, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
+      propertyPath: m_Name
+      value: Lught
       objectReference: {fileID: 0}
     - target: {fileID: 5971043585990047553, guid: f5bb4bfbcfa178c4e85fa570d517c083, type: 3}
       propertyPath: m_Sprite
@@ -194,4 +198,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salud: 100
-  sonido: {fileID: 8300000, guid: b99b6e656ce4a2b4293857053cc87faa, type: 3}
+  source: {fileID: 0}
+  clipSource: {fileID: 0}

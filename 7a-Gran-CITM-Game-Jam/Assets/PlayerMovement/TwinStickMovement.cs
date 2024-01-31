@@ -114,7 +114,7 @@ public class TwinStickMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         Vector3 move = new Vector3(movement.x, movement.y, 0);
-        transform.position += (move * Time.deltaTime * playerSpeed);
+        transform.position += (move * Time.fixedDeltaTime * playerSpeed);
 
         if(Input.GetKeyDown(KeyCode.W))
         {
