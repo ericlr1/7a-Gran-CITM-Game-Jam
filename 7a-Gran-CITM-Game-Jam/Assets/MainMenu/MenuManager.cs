@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
-
-
     public void CargarOptions()
     {
         SceneManager.LoadScene("Options");
@@ -16,7 +14,7 @@ public class MenuManager : MonoBehaviour
     }
     public void CargarDifficultyEasy()
     {
-        SceneManager.LoadScene("DifficultEasyScene");
+        SceneManager.LoadScene("DifficultEasy");
     }
     public void CargarDifficultyNormal()
     {
@@ -25,6 +23,10 @@ public class MenuManager : MonoBehaviour
     public void CargarDifficultyHard()
     {
         SceneManager.LoadScene("DifficultHardScene");
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 
