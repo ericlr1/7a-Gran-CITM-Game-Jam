@@ -33,13 +33,15 @@ public class Weapon_Movment_Manager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.2f);
+           
             animator.SetBool("Movment_Up", true);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, +0.1f);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, +0.2f);
+            
             animator.SetBool("Movment_Up", false);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.1f);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -50,16 +52,5 @@ public class Weapon_Movment_Manager : MonoBehaviour
         {
             animator.SetBool("Movment_Down", false);
         }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            animator.SetBool("Movment_Izquierda", true);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            animator.SetBool("Movment_Izquierda", false);
-        }
-
-
-       
     }
 }
