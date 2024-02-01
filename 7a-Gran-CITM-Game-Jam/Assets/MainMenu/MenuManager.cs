@@ -32,6 +32,10 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("DifficultHardScene");
     }
+    public void CargarTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
     public void Exit()
     {
         Application.Quit();
