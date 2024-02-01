@@ -10,7 +10,7 @@
 
 | Ranged Enemy | Fast Enemy | Slow Enemy | Insanity Eye |
 |----------|----------|----------|----------|
-| <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/144c311b-7da4-4866-823f-6d7c94f456fb" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/f7de88eb-b807-4531-8eab-5868d4b64159" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/f047e735-d896-41ed-a3c0-b8886f8d7721" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/3174cfbb-94cc-4150-bd28-f9a90c941a80" width="100"> |
+| <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/8042454d-4209-4cdf-9ecd-b349a10b1b08" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/ba280c3a-9ed6-4ada-8919-b1e1e341a20b" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/d8563e15-a991-4e05-bd7c-a1500ab307a5" width="100"> | <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/0946a7b5-bcf3-4143-ae1b-b869dd6883ef" width="100"> |
 
 
 ### -- Controls --
