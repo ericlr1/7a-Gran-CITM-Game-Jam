@@ -22,9 +22,6 @@ public class Bullet : MonoBehaviour
        
         if (other.CompareTag("Enemy"))
         {
-            // Destruye el proyectil al tocar al enemigo
-            Destroy(other.gameObject);
-
             Enemy enemigo = other.GetComponent<Enemy>();
             if (enemigo != null)
             {
