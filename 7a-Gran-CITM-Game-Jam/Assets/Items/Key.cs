@@ -13,8 +13,10 @@ public class Key : MonoBehaviour
             
             if (door != null)
             {
-                door.GetComponent<Door>().UnlockDoor();
+                Debug.Log("Key obtained");
                 gameObject.SetActive(false);
+                door.GetComponent<Door>().UnlockDoor();
+                
             }
         }
     }
