@@ -497,7 +497,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1796055494}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: CargarPlay
+        m_MethodName: CargarMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
