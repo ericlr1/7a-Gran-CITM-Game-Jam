@@ -16,6 +16,11 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("DifficultEasy");
     }
+    public void CargarCreditos()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     //public void CargarDifficultyNormal()
     //{
     //    SceneManager.LoadScene("DifficultNormalScene");
