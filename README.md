@@ -1,7 +1,7 @@
 # 7a Gran CITM Game Jam
 
 <p align="center">
-  <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/f4f9d3b5-3c43-4993-9850-ab65e179ea07" alt="Image" width="300"/>
+  <img src="https://github.com/ericlr1/7a-Gran-CITM-Game-Jam/assets/99949465/f4f9d3b5-3c43-4993-9850-ab65e179ea07" alt="Image" width="500"/>
 </p>
 
 
