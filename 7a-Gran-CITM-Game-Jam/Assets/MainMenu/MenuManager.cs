@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
+    public void CargarMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void CargarOptions()
     {
         SceneManager.LoadScene("Options");

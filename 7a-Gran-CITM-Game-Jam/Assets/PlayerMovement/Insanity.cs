@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Insanity : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class Insanity : MonoBehaviour
         }
         else
         {
-            //Kill the player
+            SceneManager.LoadScene("Dead");
         }
     }
 

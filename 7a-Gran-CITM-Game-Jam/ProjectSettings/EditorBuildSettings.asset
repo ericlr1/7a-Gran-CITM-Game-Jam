@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Options.unity
     guid: 4814755be515608428ff174573bb00e7
   - enabled: 1
-    path: Assets/Scenes/Creditos.unity
-    guid: c9187f12801e4864b8081e6c84eafa13
+    path: Assets/Scenes/Tutorial.unity
+    guid: 9cb29f0607218274cb88e42b8c83cc58
   - enabled: 1
     path: Assets/Scenes/DifficultScene.unity
     guid: 8502a51db3f2f9849aad64f32388bc3a
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dead.unity
     guid: e25cf29c53b73224e8f722b264088458
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 04c7a9f72a476ff42b3475e868180492
   m_configObjects: {}
