@@ -6,8 +6,6 @@ using UnityEngine;
 public class Weapon_Movment_Manager : MonoBehaviour
 {
     private Animator animator;
-    private bool isAPressed = false;
-    private bool isDPressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +33,15 @@ public class Weapon_Movment_Manager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.2f);
             animator.SetBool("Movment_Up", true);
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, +0.2f);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.2f);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, +0.2f);
             animator.SetBool("Movment_Up", false);
         }
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             animator.SetBool("Movment_Down", true);
@@ -51,40 +50,16 @@ public class Weapon_Movment_Manager : MonoBehaviour
         {
             animator.SetBool("Movment_Down", false);
         }
-
-
-        MovmentWithKeys();
-    }
-
-    public void MovmentWithKeys()
-    {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            isAPressed = true;
+            animator.SetBool("Movment_Izquierda", true);
         }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            isDPressed = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && !isAPressed && !isDPressed)
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, +0.2f);
-        }
-
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            isDPressed = false;
-        }
-
         if (Input.GetKeyUp(KeyCode.A))
         {
-            isAPressed = false;
+            animator.SetBool("Movment_Izquierda", false);
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -0.2f);
-        }
+
+       
     }
 }

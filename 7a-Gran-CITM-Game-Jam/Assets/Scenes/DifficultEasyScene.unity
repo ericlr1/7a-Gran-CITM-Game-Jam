@@ -3897,7 +3897,6 @@ GameObject:
   - component: {fileID: 678679578}
   - component: {fileID: 678679580}
   - component: {fileID: 678679577}
-  - component: {fileID: 678679579}
   - component: {fileID: 678679581}
   m_Layer: 0
   m_Name: Quit
@@ -3934,21 +3933,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1967799252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &678679579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678679576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d2c5d5676ece04e92432fa23c5304f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  sliderValue: 1
-  imagenMute: {fileID: 0}
 --- !u!114 &678679580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37091,7 +37075,7 @@ PrefabInstance:
     - target: {fileID: 1372177399920497930, guid: 48bced10ec4ded946811e7bf87a0c92e, type: 3}
       propertyPath: source
       value: 
-      objectReference: {fileID: 1047820221}
+      objectReference: {fileID: 0}
     - target: {fileID: 6396528632314914364, guid: 48bced10ec4ded946811e7bf87a0c92e, type: 3}
       propertyPath: m_Name
       value: Door
