@@ -13,3 +13,20 @@
 WASD: Movement
 
 Keyboard Arrows: Shoot dart gun
+
+### -- Credits --
+#### Code:
+- [ericlr1](https://github.com/ericlr1)
+- [MarcelSunyer](https://github.com/MarcelSunyer)
+
+#### Desing:
+- [Toto-RR](https://github.com/Toto-RR)
+
+#### Art:
+- [Neffyer](https://github.com/Neffyer)
+- [DaniMariagesUPC](https://github.com/DaniMariages)
+
+Special thanks to:
+- [mariogs5](https://github.com/mariogs5)
+- [Door Unlock FX](https://freesound.org/people/DWOBoyle/sounds/151587/)
+- [Vampire dying FX](https://freesound.org/people/Robinhood76/sounds/585631/)
