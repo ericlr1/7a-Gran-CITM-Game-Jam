@@ -24,15 +24,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
-
-    //public void CargarDifficultyNormal()
-    //{
-    //    SceneManager.LoadScene("DifficultNormalScene");
-    //}
-    //public void CargarDifficultyHard()
-    //{
-    //    SceneManager.LoadScene("DifficultHardScene");
-    //}
+    public void CargarDifficultyNormal()
+    {
+        SceneManager.LoadScene("DifficultNormalScene");
+    }
+    public void CargarDifficultyHard()
+    {
+        SceneManager.LoadScene("DifficultHardScene");
+    }
     public void Exit()
     {
         Application.Quit();
