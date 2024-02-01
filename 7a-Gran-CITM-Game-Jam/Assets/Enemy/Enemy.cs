@@ -7,47 +7,29 @@ using UnityEngine.Audio;
 public class Enemy : MonoBehaviour
 {
     public int salud = 100;
-    public AudioClip sonidoMuerte;  // Asigna el clip de audio desde el Inspector
-    public AudioSource audioSource;
-
-    void Start()
-    {
-        // Obtén la referencia al componente AudioSource
-        audioSource = GetComponent<AudioSource>();
-
-        // Asegúrate de que el AudioSource esté configurado correctamente
-        if (audioSource == null)
-        {
-            Debug.LogError("El componente AudioSource no está adjunto al objeto.");
-        }
-        else
-        {
-            // Asegúrate de que se haya asignado un clip de audio
-            if (sonidoMuerte == null)
-            {
-                Debug.LogError("No se ha asignado un clip de audio para la muerte del enemigo.");
-            }
-        }
-    }
+    public GameObject particulasColision;
 
     public void RecibirDano(int cantidad)
     {
         salud -= cantidad;
 
-        // Verifica si la salud es menor o igual a cero para "matar" al enemigo
         if (salud <= 0)
         {
-            // Reproduce el sonido de muerte si hay un clip de audio asignado
-            if (sonidoMuerte != null && audioSource != null)
+            Destroy(gameObject);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Verifica si la colisión es con un objeto que tenga el tag "Bala"
+        if (collision.gameObject.CompareTag("Bala"))
+        {
+            // Activa el sistema de partículas si está asignado
+            if (particulasColision != null)
             {
-                audioSource.PlayOneShot(sonidoMuerte);
-                Debug.Log("Sonido Daño");
+                Instantiate(particulasColision, transform.position, Quaternion.identity);
             }
 
-            // Aquí puedes agregar cualquier lógica adicional cuando el enemigo muere
-            Destroy(gameObject);
-
-            
+            // Aquí puedes agregar cualquier lógica adicional cuando colisiona con una bala
         }
     }
 }

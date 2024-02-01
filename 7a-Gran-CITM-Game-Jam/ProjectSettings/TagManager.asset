@@ -8,6 +8,7 @@ TagManager:
   - Teddy_Bear
   - Wall
   - Door
+  - Bala
   layers:
   - Default
   - TransparentFX
